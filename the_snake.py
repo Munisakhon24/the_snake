@@ -3,7 +3,7 @@ from random import randint
 import pygame
 
 # 
-SCREEN_WIDTH, SCREEN_HEIGHT = 640, 490
+SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 GRID_SIZE = 20
 GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
 GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
@@ -24,7 +24,7 @@ SNAKE_COLOR = (0, 255, 0)               # зелёный
 
 #  Скорость игры 
 
-SPEED = 10  # «шагов» (кадров) в секунду p.s мне показалось что 20 слишком быстро)
+SPEED = 10  # «шагов» (кадров) в секунду p.s мне показалось что 20 слишком
 
 
 pygame.init()
