@@ -1,4 +1,4 @@
-from random import randint
+from random import choice, randint
 
 import pygame
 
@@ -24,7 +24,7 @@ SNAKE_COLOR = (0, 255, 0)               # зелёный
 
 #  Скорость игры 
 
-SPEED = 10  # «шагов» (кадров) в секунду p.s мне показалось что 20 слишком
+SPEED = 10  # «шагов» (кадров) в секунду p.s мне показалось что 20 слишком быстрым
 
 
 pygame.init()
