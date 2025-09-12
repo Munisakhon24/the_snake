@@ -8,7 +8,7 @@ GRID_SIZE = 20
 GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
 GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
 
-# --- Направления движения --------------------------------------------------- 
+# --- Направления движения ---------------------------------------------------
 UP = (0, -1)
 DOWN = (0, 1)
 LEFT = (-1, 0)
@@ -78,7 +78,7 @@ class Snake(GameObject):
         super().__init__(body_color=body_color)
         self.length = 1
         self.positions = [self.position]
-        self.direction = RIGHT  
+        self.direction = RIGHT
         self.next_direction = None
         self.last = None
 
@@ -91,7 +91,6 @@ class Snake(GameObject):
         if self.next_direction:
             ndx, ndy = self.next_direction
             cdx, cdy = self.direction
-            # запрет разворота: противоположные вектора дают сумму по осям ==0
             if not (ndx + cdx == 0 and ndy + cdy == 0):
                 self.direction = self.next_direction
             self.next_direction = None
@@ -192,5 +191,9 @@ def main():
         clock.tick(SPEED)
 
 if __name__ == '__main__':
+   
+   
     main()
+
+
 
