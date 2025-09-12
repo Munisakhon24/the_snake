@@ -1,5 +1,4 @@
 from random import randint
-
 import pygame
 
 # --- Константы поля и сетки -------------------------------------------------
@@ -83,7 +82,7 @@ class Snake(GameObject):
         self.last = None
 
     def get_head_position(self):
-        """Возвращает координаты головы"""
+        """Возвращает координаты головы."""
         return self.positions[0]
 
     def update_direction(self):
@@ -141,7 +140,6 @@ class Snake(GameObject):
 
 
 # ============================ УПРАВЛЕНИЕ =====================================
-
 def handle_keys(game_object):
     """Обрабатывает события: клавиши движения и выход из игры."""
     for event in pygame.event.get():
@@ -164,7 +162,6 @@ def handle_keys(game_object):
 
 
 # ============================ ОСНОВНОЙ ЦИКЛ ==================================
-
 def main():
     """Главный цикл игры."""
     screen.fill(BOARD_BACKGROUND_COLOR)
@@ -189,6 +186,7 @@ def main():
         apple.draw()
         pygame.display.update()
         clock.tick(SPEED)
+
 
 if __name__ == '__main__':
     main()
