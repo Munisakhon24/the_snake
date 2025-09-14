@@ -56,7 +56,7 @@ class GameObject:
     def draw(self):
         """Абстрактный метод: должен быть переопределён в дочерних классах."""
         raise NotImplementedError(
-            f"Метод draw() не реализован в классе {self.__class__.__name__}"
+            f'Метод draw() не реализован в классе {self.__class__.__name__}'
         )
 
 
