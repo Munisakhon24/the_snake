@@ -3,7 +3,6 @@ from random import randint
 
 import pygame as pg
 
-
 # --- Константы поля и сетки -------------------------------------------------
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 GRID_SIZE = 20
