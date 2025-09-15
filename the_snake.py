@@ -2,6 +2,8 @@ from random import randint
 
 import pygame as pg
 
+import sys
+
 # --- Константы поля и сетки -------------------------------------------------
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
 GRID_SIZE = 20
@@ -41,9 +43,7 @@ clock = pg.time.Clock()
 class GameObject:
     """Базовый игровой объект: хранит позицию и цвет."""
 
-    def __init__(self, position=None, body_color=WHITE_COLOR):
-        if position is None:
-            position = DEFAULT_POSITION
+    def __init__(self, position=DEFAULT_POSITION, body_color=WHITE_COLOR):
         self.position = position
         self.body_color = body_color
 
@@ -118,7 +118,6 @@ class Snake(GameObject):
         else:
             self.last = None
 
-        self.position = new_head
 
     def draw(self):
         """Рисует змейку и затирает последний сегмент."""
@@ -133,8 +132,6 @@ class Snake(GameObject):
 
     def reset(self):
         """Сбрасывает змейку к исходному состоянию (центр, длина=1, вправо)."""
-        cx = (SCREEN_WIDTH // 2 // GRID_SIZE) * GRID_SIZE
-        cy = (SCREEN_HEIGHT // 2 // GRID_SIZE) * GRID_SIZE
         self.position = (cx, cy)
         self.length = 1
         self.positions = [self.position]
@@ -149,11 +146,11 @@ def handle_keys(game_object):
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
-            raise SystemExit
+            sys.exit()
         elif event.type == pg.KEYDOWN:
             if event.key == pg.K_ESCAPE:
                 pg.quit()
-                raise SystemExit
+                sys.exit()
             if (event.key in (pg.K_UP, pg.K_w)
                     and game_object.direction != DOWN):
                 game_object.next_direction = UP
@@ -184,7 +181,7 @@ def main():
         if snake.get_head_position() == apple.position:
             snake.length += 1
             apple.randomize_position(forbidden=snake.positions)
-        elif snake.get_head_position() in snake.positions[1:]:
+        elif snake.get_head_position() in snake.positions[4:]:
             snake.reset()
             screen.fill(BOARD_BACKGROUND_COLOR)
             apple.randomize_position(forbidden=snake.positions)
