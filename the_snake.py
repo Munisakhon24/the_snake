@@ -34,7 +34,7 @@ SPEED = 10  # кадров в секунду
 # --- Инициализация окна и часов ---------------------------------------------
 pg.init()
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
-pg.display.set_caption("Змейка")
+pg.display.set_caption('Змейка')
 clock = pg.time.Clock()
 
 
@@ -55,7 +55,7 @@ class GameObject:
     def draw(self):
         """Абстрактный метод: должен быть переопределён в дочерних классах."""
         raise NotImplementedError(
-            f"Метод draw() не реализован в классе {self.__class__.__name__}"
+            f'Метод draw() не реализован в классе {self.__class__.__name__}'
         )
 
 
