@@ -1,8 +1,8 @@
+import sys
 from random import randint
 
 import pygame as pg
 
-import sys
 
 # --- Константы поля и сетки -------------------------------------------------
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
@@ -88,7 +88,6 @@ class Snake(GameObject):
     def __init__(self, body_color=SNAKE_COLOR):
         super().__init__(body_color=body_color)
         self.length = 1
-        self.positions = [self.position]
         self.direction = RIGHT
         self.next_direction = None
         self.last = None
@@ -118,7 +117,6 @@ class Snake(GameObject):
         else:
             self.last = None
 
-
     def draw(self):
         """Рисует змейку и затирает последний сегмент."""
         for position in self.positions[1:]:
@@ -132,7 +130,7 @@ class Snake(GameObject):
 
     def reset(self):
         """Сбрасывает змейку к исходному состоянию (центр, длина=1, вправо)."""
-        self.position = (cx, cy)
+        self.position = DEFAULT_POSITION
         self.length = 1
         self.positions = [self.position]
         self.direction = RIGHT
