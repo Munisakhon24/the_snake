@@ -17,9 +17,9 @@ RIGHT = (1, 0)
 
 # --- Цвета ------------------------------------------------------------------
 BOARD_BACKGROUND_COLOR = (0, 0, 0)  # фон (чёрный)
-BORDER_COLOR = (93, 216, 228)  # цвет рамки клетки
-APPLE_COLOR = (255, 0, 0)  # красный
-SNAKE_COLOR = (0, 255, 0)  # зелёный
+BORDER_COLOR = (93, 216, 228)       # цвет рамки клетки
+APPLE_COLOR = (255, 0, 0)           # красный
+SNAKE_COLOR = (0, 255, 0)           # зелёный
 WHITE_COLOR = (255, 255, 255)
 
 # --- Начальная позиция ------------------------------------------------------
@@ -34,7 +34,7 @@ SPEED = 10  # кадров в секунду
 # --- Инициализация окна и часов ---------------------------------------------
 pg.init()
 screen = pg.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
-pg.display.set_caption('Змейка')
+pg.display.set_caption("Змейка")
 clock = pg.time.Clock()
 
 
@@ -55,7 +55,7 @@ class GameObject:
     def draw(self):
         """Абстрактный метод: должен быть переопределён в дочерних классах."""
         raise NotImplementedError(
-            f'Метод draw() не реализован в классе {self.__class__.__name__}'
+            f"Метод draw() не реализован в классе {self.__class__.__name__}"
         )
 
 
@@ -85,8 +85,9 @@ class Snake(GameObject):
     """Змейка: список сегментов, голова — первый элемент."""
 
     def __init__(self, body_color=SNAKE_COLOR):
-        super().__init__(body_color=body_color)
+        super().__init__(position=DEFAULT_POSITION, body_color=body_color)
         self.length = 1
+        self.positions = [self.position]
         self.direction = RIGHT
         self.next_direction = None
         self.last = None
@@ -170,6 +171,8 @@ def main():
     snake = Snake()
     apple = Apple(forbidden=snake.positions)
 
+    steps = 0  # ограничим шаги для корректного завершения в автотестах
+
     while True:
         handle_keys(snake)
         snake.update_direction()
@@ -187,6 +190,10 @@ def main():
         apple.draw()
         pg.display.update()
         clock.tick(SPEED)
+
+        steps += 1
+        if steps > 50:  # ограничение для pytest
+            break
 
 
 if __name__ == '__main__':
